@@ -16,14 +16,30 @@ const Calendar = () => {
     translateX: -50 + pageIndex * 50,
     direction: null,
   });
+  const isMovePending = useRef(false);
+
+  // const handleMoveCalendar = useCallback(
+  //   throttle((movePoint, direction) => {
+  //     setSlideInfo(({ translateX }) => ({ translateX: translateX + movePoint, direction: direction }));
+  //     setPageIndex((prev) => prev + getDirectionValue(direction));
+  //   }, 300),
+  //   [slideInfo],
+  // );
 
   const handleMoveCalendar = useCallback(
-    throttle((movePoint, direction) => {
-      setSlideInfo(({ translateX }) => ({ translateX: translateX + movePoint, direction: direction }));
-      setPageIndex((prev) => prev + getDirectionValue(direction));
-    }, 300),
-    [slideInfo],
+    (movePoint, direction) => {
+      if (!isMovePending.current) {
+        isMovePending.current = true;
+        setSlideInfo(({ translateX }) => ({ translateX: translateX + movePoint, direction: direction }));
+        setPageIndex((prev) => prev + getDirectionValue(direction));
+      }
+    },
+    [isMovePending.current],
   );
+
+  const handleMoveEnd = () => {
+    isMovePending.current = false;
+  };
 
   console.log(pageIndex);
 
@@ -31,7 +47,7 @@ const Calendar = () => {
   const todayYear = today.getFullYear();
   const todayMonth = today.getMonth();
   const todayDate = today.getDate();
-  const getTodayDatePassByMonth = (passMonth) => new Date(todayYear, todayMonth + passMonth);
+  const getTodayDatePassByMonth = useCallback((passMonth) => new Date(todayYear, todayMonth + passMonth), []);
 
   let calendarYearMonthArr = [
     getTodayDatePassByMonth(-1),
@@ -48,7 +64,7 @@ const Calendar = () => {
   return (
     <S.Calendar>
       <Icon onClick={handleMoveCalendar.bind(null, 50, "FORWARD")} iconName={PREV_BUTTON} iconSize="small" />
-      <S.SlideList translateX={slideInfo.translateX}>
+      <S.SlideList translateX={slideInfo.translateX} onTransitionEnd={handleMoveEnd}>
         {calendarYearMonthArr.map((currDate) => (
           <CalendarPage key={currDate.getTime()} currDate={currDate} />
         ))}
