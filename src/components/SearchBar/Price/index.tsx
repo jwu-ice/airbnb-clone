@@ -213,6 +213,21 @@ const Slider = ({ setMinPrice, setMaxPrice, pricePerPixel }: SilderProps) => {
   );
 };
 
+interface sliderProps {
+  min: number;
+  max: number;
+}
+
+const Slider = ({ min, max }: sliderProps) => {
+  // const onChangeHandlerMin = () => {};
+  return (
+    <S.Slider>
+      <S.LeftInput type="range" min={min} max={max} />
+      <S.RightInput type="range" min={min} max={max} />
+    </S.Slider>
+  );
+};
+
 const getData = async (url: string) => {
   const data = await fetch(url);
 
