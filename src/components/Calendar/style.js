@@ -14,6 +14,6 @@ export const SlideList = styled.div`
   width: 100%;
   // 파라미터로 받기
   transition-property: all;
-  transition-duration: 0.2s;
+  transition-duration: 0.3s;
   transform: translateX(${({ translateX }) => `${translateX}%`});
 `;
