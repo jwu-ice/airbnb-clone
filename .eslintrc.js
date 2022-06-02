@@ -25,7 +25,7 @@ module.exports = {
     project: "./tsconfig.json",
     tsconfigRootDir: __dirname,
   },
-  plugins: ["react", "@typescript-eslint", "import", "prettier"],
+  plugins: ["react-hooks", "react", "@typescript-eslint", "import", "prettier"],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -35,6 +35,8 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   rules: {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-var-requires": 0,
