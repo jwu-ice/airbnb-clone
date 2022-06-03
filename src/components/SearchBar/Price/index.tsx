@@ -218,13 +218,26 @@ interface sliderProps {
   max: number;
 }
 
-const Slider = ({ min, max }: sliderProps) => {
-  // const onChangeHandlerMin = () => {};
   return (
-    <S.Slider>
-      <S.LeftInput type="range" min={min} max={max} />
-      <S.RightInput type="range" min={min} max={max} />
-    </S.Slider>
+    <>
+      <S.LeftFilter ref={leftFilterRef} />
+      <S.Slider>
+        <S.LeftButton
+          ref={leftRef}
+          draggable
+          onDragStart={dragStartHandler}
+          onDrag={leftButtonDragHandler}
+          onDragEnd={leftButtonDragEndHandler}
+        />
+        <S.RightButton
+          draggable
+          ref={leftRef}
+          onDragStart={dragStartHandler}
+          onDrag={rightButtonDragHandler}
+          onDragEnd={rightButtonDragEndHandler}
+        />
+      </S.Slider>
+    </>
   );
 };
 
