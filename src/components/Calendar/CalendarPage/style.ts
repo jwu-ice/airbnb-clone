@@ -17,14 +17,15 @@ export const CalendarContent = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${({ theme }) => theme.fontSize.smaller};
-  color: ${({ theme }) => theme.color.gray3};
+  color: ${({ theme }) => theme.color.black};
 `;
+
 export const CalendarDay = styled.div`
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: repeat(7, minmax(0, 1fr));
+  color: ${({ theme }) => theme.color.gray3};
 `;
-export const CalendarDate = styled(CalendarDay)``;
 
 export const DayItem = styled.div`
   display: flex;
@@ -32,12 +33,4 @@ export const DayItem = styled.div`
   align-items: center;
   width: 48px;
   height: 48px;
-`;
-
-export const DateItem = styled(DayItem)`
-  ${({ date }) =>
-    date &&
-    css`
-      cursor: pointer;
-    `}
 `;

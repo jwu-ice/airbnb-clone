@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import NYANCAT_GIF from "assets/nyancat+adventuretime.gif";
+import NYANCAT_GIF from "@assets/nyancat+adventuretime.gif";
 
 const NotFound = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const TextBox = styled.div`
   display: flex;
@@ -16,8 +16,14 @@ export const TextBoxLabel = styled.div`
   color: ${({ theme }) => theme.color.black};
 `;
 
-export const TextBoxText = styled.div`
+export const TextBoxText = styled.div<{ textContent: string | null }>`
   font-size: ${({ theme }) => theme.fontSize.base};
-  font-weight: ${({ theme }) => theme.fontWeight.base};
   color: ${({ theme }) => theme.color.gray2};
+
+  ${({ textContent }) =>
+    textContent &&
+    css`
+      color: ${({ theme }) => theme.color.black};
+      font-weight: ${({ theme }) => theme.fontWeight.bold};
+    `};
 `;
