@@ -213,34 +213,6 @@ const Slider = ({ setMinPrice, setMaxPrice, pricePerPixel }: SilderProps) => {
   );
 };
 
-interface sliderProps {
-  min: number;
-  max: number;
-}
-
-  return (
-    <>
-      <S.LeftFilter ref={leftFilterRef} />
-      <S.Slider>
-        <S.LeftButton
-          ref={leftRef}
-          draggable
-          onDragStart={dragStartHandler}
-          onDrag={leftButtonDragHandler}
-          onDragEnd={leftButtonDragEndHandler}
-        />
-        <S.RightButton
-          draggable
-          ref={leftRef}
-          onDragStart={dragStartHandler}
-          onDrag={rightButtonDragHandler}
-          onDragEnd={rightButtonDragEndHandler}
-        />
-      </S.Slider>
-    </>
-  );
-};
-
 const getData = async (url: string) => {
   const data = await fetch(url);
 

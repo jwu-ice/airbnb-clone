@@ -10,3 +10,4 @@ export const SearchBar = styled.div`
   border: 1px solid ${({ theme }) => theme.color.gray4};
   margin: 0 auto;
   background-color: ${({ theme }) => theme.color.white};
+`;

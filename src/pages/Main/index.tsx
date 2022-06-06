@@ -3,8 +3,6 @@ import SearchBar from "@components/SearchBar";
 
 import * as S from "./style";
 
-import * as S from "./style";
-
 const Main = () => {
   return (
     <>
